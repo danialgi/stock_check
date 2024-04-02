@@ -77,9 +77,8 @@ for i in range(num_rows):
     df3s[i] = df3[df3['Product'] == cell_value]
     dfs[i]= pd.concat([df1s[i], df2s[i], df3s[i]], axis=0,ignore_index=True)
     dfs[i] =  dfs[i][['Product','Product Name','Unnamed: 5','Quantity','BalanceQty']]
-    dfs[i]= dfs[i].groupby(['Product'],as_index=False).max()
+    dfs[i]= dfs[i].groupby(['Product'],as_index=False).sum()
     dfs[i].rename(columns={'Unnamed: 5': 'Warehouse', 'Quantity': 'WMS', 'BalanceQty': 'ERP'}, inplace=True)
-    #dfs[i]
 
 df_final = pd.concat(dfs)
 df_final["EQUAL"] = (df_final['Warehouse'] == df_final['WMS']) & (df_final['Warehouse'] == df_final['ERP'])
