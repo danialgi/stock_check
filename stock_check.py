@@ -39,6 +39,7 @@ if seq_file is not None:
         mime='text/csv',
     )
 
+st.markdown("#")
 st.write("______________________________________________________________________________________")
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
@@ -88,7 +89,7 @@ df_unique.reset_index(inplace=True)
 df_unique = df_unique.drop('index', axis=1)
 #df_unique
 
-st.write("______________________________________________________________________________________")
+st.markdown("#")
 num_rows = len(df_unique.index)
 
 df1s={}
@@ -108,7 +109,29 @@ for i in range(num_rows):
 
 df_final = pd.concat(dfs)
 df_final["EQUAL"] = (df_final['Warehouse'] == df_final['WMS']) & (df_final['Warehouse'] == df_final['ERP'])
+#df_final
+
+def variance_of_row(row):
+    # Calculate the mean of the values in the row
+    mean = row.mean()
+    # Calculate the variance using the formula
+    variance = ((row - mean) ** 2).mean()
+    return variance
+
+df_var = df_final[['Warehouse', 'WMS','ERP']].copy()
+# Apply the function across the rows
+df_var['variance'] = df_var.apply(variance_of_row, axis=1)
+df_var['variance'] = df_var['variance'].round(0)
+#df_var
+
+df_final = pd.concat([df_final, df_var], axis=1, ignore_index=True)
+df_final = df_final[[0,1,6,7,8,9]].copy()
+df_final.rename(columns={0: 'Product', 1: 'Product Name', 6: 'Warehouse', 7: 'WMS', 8: 'ERP', 9: 'var.'}, inplace=True)
+df_final  = df_final .sort_values(by='var.', ascending=False)
+df_final.reset_index(inplace=True)
+df_final = df_final.drop(['level_0','level_1'], axis=1)
 df_final
+
 
 @st.cache_data
 def convert_df(df):
