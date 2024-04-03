@@ -121,7 +121,7 @@ def variance_of_row(row):
 df_var = df_final[['Warehouse', 'WMS','ERP']].copy()
 # Apply the function across the rows
 df_var['variance'] = df_var.apply(variance_of_row, axis=1)
-df_var['variance'] = df_var['variance'].round(0)
+#df_var['variance'] = df_var['variance'].round(0)
 #df_var
 
 df_final = pd.concat([df_final, df_var], axis=1, ignore_index=True)
