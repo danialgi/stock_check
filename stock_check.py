@@ -45,14 +45,14 @@ st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file,sheet_name="Sheet1")
 df2 = pd.read_excel(data_file,sheet_name="Sheet2")
-st.write("UPLOAD SUCESS")
+st.write("UPLOAD SUCCESS")
 
 st.markdown("#")
 st.header("ERP File Upload")
 data_file2 = st.file_uploader("ERP file",type=['xlsx'])
 df3 = pd.read_excel(data_file2)
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
-st.write("UPLOAD SUCESS")
+st.write("UPLOAD SUCCESS")
 
 #df1
 #df2
