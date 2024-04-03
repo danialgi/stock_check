@@ -39,8 +39,7 @@ if seq_file is not None:
         mime='text/csv',
     )
 
-st.write("______________________________________________________________________________________"
-
+st.write("______________________________________________________________________________________")
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file,sheet_name="Sheet1")
