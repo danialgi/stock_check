@@ -7,12 +7,39 @@ import os
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
-#from natsort import natsorted
+from natsort import natsort_keygen
 
 st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 
 st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Check📝")
 st.markdown("##")
+
+st.header("WMS Sequencer")
+seq_file = st.file_uploader("file",type=['xlsx'])
+
+if seq_file is not None:
+    df_seq = pd.read_excel(seq_file,sheet_name="Sheet2")
+    st.write("Before:")
+    df_seq
+    df_seq  = df_seq .sort_values(by='Location Code', key=natsort_keygen())
+    st.write("After:")
+    st.dataframe(df_seq)
+
+    @st.cache_data
+    def convert_df(df):
+        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+        return df.to_csv().encode('utf-8')
+
+    csv = convert_df(df_seq)
+
+    st.download_button(
+        label="Download",
+        data=csv,
+        file_name='WMS_Sequenced.csv',
+        mime='text/csv',
+    )
+
+st.write("______________________________________________________________________________________"
 
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
