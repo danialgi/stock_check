@@ -11,7 +11,7 @@ from natsort import natsort_keygen
 
 st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 
-st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick✅")
+st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick📝")
 st.markdown("##")
 
 st.header("WMS Sequencer")
