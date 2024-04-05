@@ -8,6 +8,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
 from natsort import natsort_keygen
+from datetime import datetime
+
+today_date = datetime.now().strftime('%Y-%m-%d')
 
 st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 
@@ -25,19 +28,28 @@ if seq_file is not None:
     st.write("After:")
     df_seq
 
-    @st.cache_data
-    def convert_df(df):
-        # IMPORTANT: Cache the conversion to prevent computation on every rerun
-        return df.to_csv().encode('utf-8')
+    # Function to write DataFrames to an Excel file in memory
+def dfs_to_excel(df_list, sheet_list):
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        for dataframe, sheet in zip(df_list, sheet_list):
+            dataframe.to_excel(writer, sheet_name=sheet, index=False)
+    output.seek(0)
+    return output
 
-    csv = convert_df(df_seq)
+df_list = [df_seq]
+sheet_list = ['Sheet1']
 
-    st.download_button(
-        label="Download",
-        data=csv,
-        file_name='WMS_Sequenced.csv',
-        mime='text/csv',
-    )
+# Convert DataFrames to Excel in memory
+excel_file = dfs_to_excel(df_list, sheet_list)
+
+# Streamlit download button
+st.download_button(
+    label="Download Excel file",
+    data=excel_file,
+    file_name=f"WMS_Sequenced_{today_date}.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+)
 
 st.markdown("#")
 st.write("______________________________________________________________________________________")
@@ -116,16 +128,25 @@ df_final.reset_index(inplace=True)
 df_final = df_final.drop(['level_0','level_1'], axis=1)
 df_final
 
-@st.cache_data
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
+# Function to write DataFrames to an Excel file in memory
+def dfs_to_excel(df_list, sheet_list):
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        for dataframe, sheet in zip(df_list, sheet_list):
+            dataframe.to_excel(writer, sheet_name=sheet, index=False)
+    output.seek(0)
+    return output
 
-csv = convert_df(df_final)
+df_list = [df_final]
+sheet_list = ['Sheet1']
 
+# Convert DataFrames to Excel in memory
+excel_file = dfs_to_excel(df_list, sheet_list)
+
+# Streamlit download button
 st.download_button(
-    label="Download",
-    data=csv,
-    file_name='Stock_Check.csv',
-    mime='text/csv',
+    label="Download Excel file",
+    data=excel_file,
+    file_name=f"Stock_Tick_{today_date}.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 )
