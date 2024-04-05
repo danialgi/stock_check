@@ -14,8 +14,8 @@ st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick📝")
 st.markdown("##")
 
-st.header("WMS Sequencer")
-seq_file = st.file_uploader("file",type=['xlsx'])
+st.header("Sequencer")
+seq_file = st.file_uploader("wms file",type=['xlsx'])
 
 if seq_file is not None:
     df_seq = pd.read_excel(seq_file,sheet_name="Sheet2")
