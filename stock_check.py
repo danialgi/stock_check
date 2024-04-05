@@ -9,6 +9,7 @@ from plotly.subplots import make_subplots
 import numpy as np
 from natsort import natsort_keygen
 from datetime import datetime
+from io import BytesIO
 
 today_date = datetime.now().strftime('%Y-%m-%d')
 
