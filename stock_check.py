@@ -57,7 +57,6 @@ st.write("______________________________________________________________________
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file)
-df2 = pd.read_excel(data_file,sheet_name="Sheet2")
 st.write("UPLOAD SUCESS")
 
 st.markdown("#")
