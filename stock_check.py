@@ -130,6 +130,7 @@ df_final["var."] = df_final[quantity_wms] - df_final[quantity_erp]
 df_final = df_final.sort_values(by='var.', ascending=True)
 df_final.reset_index(inplace=True)
 df_final = df_final.drop(['level_0','level_1'], axis=1)
+df_final.columns = ['ProductCode', 'WMS', 'ERP', 'variance']
 df_final
 
 # Function to write DataFrames to an Excel file in memory
