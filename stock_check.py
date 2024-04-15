@@ -80,7 +80,7 @@ df1_filtered = pd.DataFrame(df1_filtered, columns=[product_wms])
 #df1_filtered = df1_filtered.sort_values(by=product_wms, ascending=True)
 df1_filtered.reset_index(inplace=True)
 df1_filtered = df1_filtered.drop('index', axis=1)
-df1_filtered
+#df1_filtered
 
 
 df3_filtered = df3[product_erp].unique()
@@ -88,7 +88,7 @@ df3_filtered = pd.DataFrame(df3_filtered, columns=[product_erp])
 #df3_filtered = df3_filtered.sort_values(by='Product', ascending=True)
 df3_filtered.reset_index(inplace=True)
 df3_filtered = df3_filtered.drop('index', axis=1)
-df3_filtered
+#df3_filtered
 
 concatenated_df = pd.concat([df1_filtered, df3_filtered], axis=1, ignore_index=True)
 #concatenated_df
@@ -102,7 +102,7 @@ df_unique = df_unique.drop_duplicates()
 df_unique  = df_unique.dropna()
 df_unique.reset_index(inplace=True)
 df_unique = df_unique.drop('index', axis=1)
-df_unique
+#df_unique
 
 st.markdown("#")
 num_rows = len(df_unique.index)
@@ -130,7 +130,7 @@ df_final["var."] = df_final[quantity_wms] - df_final[quantity_erp]
 df_final = df_final.sort_values(by='var.', ascending=True)
 df_final.reset_index(inplace=True)
 df_final = df_final.drop(['level_0','level_1'], axis=1)
-df_final.columns = ['ProductCode', 'WMS', 'ERP', 'variance']
+df_final.columns = ['Product', 'WMS', 'ERP', 'variance']
 df_final
 
 # Function to write DataFrames to an Excel file in memory
