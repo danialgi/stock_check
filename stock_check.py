@@ -66,9 +66,8 @@ df3 = pd.read_excel(data_file2)
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
-#df1
-#df2
-#df3
+df1
+df3
 
 df1_filtered = df1["Product"].unique()
 df1_filtered = pd.DataFrame(df1_filtered, columns=['Product'])
