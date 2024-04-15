@@ -62,9 +62,6 @@ st.markdown("#")
 st.header("ERP File Upload")
 data_file2 = st.file_uploader("ERP file",type=['xlsx'])
 df3 = pd.read_excel(data_file2)
-product_code = st.multiselect('Select columns:', df3.columns.tolist())
-if selected_columns:
-    st.dataframe(df[selected_columns])
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
