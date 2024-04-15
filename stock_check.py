@@ -92,7 +92,7 @@ df_unique = df_unique.drop_duplicates()
 df_unique  = df_unique.dropna()
 df_unique.reset_index(inplace=True)
 df_unique = df_unique.drop('index', axis=1)
-df_unique
+#df_unique
 
 st.markdown("#")
 num_rows = len(df_unique.index)
