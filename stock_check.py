@@ -25,6 +25,8 @@ seq_file = st.file_uploader("location file",type=['xls'])
 if seq_file is not None:
     loc_df = pd.read_html(seq_file)
     loc_df = loc_df[0]
+    st.write("BEFORE:")
+    loc_df
     location_column = st.selectbox('Select LOCATION column:', loc_df.columns.tolist())
     
     # Generate a sort key with the natsort_keygen function
@@ -35,8 +37,6 @@ if seq_file is not None:
     df_sorted =  df_sorted.dropna(subset=[location_column])
     df_sorted.reset_index(inplace=True)
     df_sorted = df_sorted.drop('index', axis=1)
-    st.write("BEFORE:")
-    loc_df
     st.write("AFTER:")
     df_sorted
     
