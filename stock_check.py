@@ -118,7 +118,7 @@ for i in range(num_rows):
     df3s[i] = df3[df3[product_erp] == cell_value]
     dfs[i]= pd.concat([df1s[i], df3s[i]], axis=0,ignore_index=True)
     dfs[i] =  dfs[i][[product_wms,quantity_wms,quantity_erp]]
-    dfs[i]= dfs[i].groupby(['Product'],as_index=False).sum()
+    dfs[i]= dfs[i].groupby([product_wms],as_index=False).sum()
     #dfs[i].rename(columns={ 'Total': 'WMS', 'CurrentQty': 'ERP'}, inplace=True)
 
 df_final = pd.concat(dfs)
