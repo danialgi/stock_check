@@ -83,22 +83,22 @@ df1_filtered = df1_filtered.drop('index', axis=1)
 df1_filtered
 
 
-df3_filtered = df3["Product"].unique()
-df3_filtered = pd.DataFrame(df3_filtered, columns=['Product'])
+df3_filtered = df3[product_erp].unique()
+df3_filtered = pd.DataFrame(df3_filtered, columns=[product_erp])
 #df3_filtered = df3_filtered.sort_values(by='Product', ascending=True)
 df3_filtered.reset_index(inplace=True)
 df3_filtered = df3_filtered.drop('index', axis=1)
-#df3_filtered
+df3_filtered
 
 concatenated_df = pd.concat([df1_filtered, df3_filtered], axis=1, ignore_index=True)
-#concatenated_df
+concatenated_df
 
 df_unique= pd.concat([df1_filtered, df3_filtered])
 df_unique = df_unique.drop_duplicates()
 df_unique  = df_unique.dropna()
 df_unique.reset_index(inplace=True)
 df_unique = df_unique.drop('index', axis=1)
-#df_unique
+df_unique
 
 st.markdown("#")
 num_rows = len(df_unique.index)
