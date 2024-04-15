@@ -62,6 +62,7 @@ data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file)
 st.write("UPLOAD SUCESS")
 
+df1
 product_wms = st.selectbox('WMS PRODUCT column:', df1.columns.tolist())
 quantity_wms = st.selectbox('WMS QUANTITY column:', df1.columns.tolist())
 
@@ -72,6 +73,7 @@ df3 = pd.read_excel(data_file2)
 #df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
+df3
 product_erp = st.selectbox('ERP PRODUCT column:', df3.columns.tolist())
 quantity_erp = st.selectbox('ERP QUANTITY column:', df3.columns.tolist())
 
