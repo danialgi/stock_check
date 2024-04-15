@@ -115,18 +115,12 @@ dfs={}
 for i in range(num_rows):
     cell_value = df_unique.iat[i, 0]
     df1s[i] = df1[df1[product_wms] == cell_value]
-    df1s[i]
     df3s[i] = df3[df3[product_erp] == cell_value]
-    df3s[i]
     dfs[i]= pd.concat([df1s[i], df3s[i]], axis=0,ignore_index=True)
-    dfs[i]
     dfs[i] =  dfs[i][[product_wms,quantity_wms,quantity_erp]]
-    dfs[i]
     dfs[i][product_wms].fillna(method='ffill', inplace=True)
     # Now, group by 'Product' and sum the values for A and B
     dfs[i] = dfs[i].groupby(product_wms, as_index=False).sum()
-    #dfs[i]= dfs[i].groupby([product_wms],as_index=False).sum()
-    dfs[i]
     #dfs[i].rename(columns={ 'Total': 'WMS', 'CurrentQty': 'ERP'}, inplace=True)
 
 df_final = pd.concat(dfs)
