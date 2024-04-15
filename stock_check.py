@@ -20,10 +20,11 @@ st.markdown("##")
 
 
 st.header("Sequencer (For Sequencing Location  ONLY)")
-seq_file = st.file_uploader("location file",type=['xlsx'])
+seq_file = st.file_uploader("location file",type=['xls'])
 
 if seq_file is not None:
-    loc_df = pd.read_excel(seq_file)
+    loc_df = pd.read_html(seq_file)
+    loc_df = loc_df[0]
     location_column = st.selectbox('Select LOCATION column:', loc_df.columns.tolist())
     
     # Generate a sort key with the natsort_keygen function
