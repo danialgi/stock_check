@@ -40,27 +40,14 @@ if seq_file is not None:
     st.write("AFTER:")
     df_sorted
     
-    # Function to write DataFrames to an Excel file in memory
-    def dfs_to_excel(df_list, sheet_list):
-        output = BytesIO()
-        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-            for dataframe, sheet in zip(df_list, sheet_list):
-                dataframe.to_excel(writer, sheet_name=sheet, index=False)
-        output.seek(0)
-        return output
-    
-    df_list = [df_sorted]
-    sheet_list = ['Sheet1']
-    
-    # Convert DataFrames to Excel in memory
-    excel_file = dfs_to_excel(df_list, sheet_list)
-    
-    # Streamlit download button
+   csv = dfdf_sorted.to_csv(index=False)
+
+    # Create the download button
     st.download_button(
-        label="Download Excel file",
-        data=excel_file,
-        file_name=f"Stock_Tick_{today_date}.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        label="Download data as CSV",
+        data=csv,
+        file_name='data.csv',
+        mime='text/csv',
     )
 
 
