@@ -62,6 +62,9 @@ if seq_file is not None:
 
 st.markdown("#")
 st.write("______________________________________________________________________________________")
+st.title("Stock Tick📝")
+st.markdown("#")
+
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file)
