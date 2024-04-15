@@ -66,15 +66,15 @@ df3 = pd.read_excel(data_file2)
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
-df1
-df3
+#df1
+#df3
 
 df1_filtered = df1["Product"].unique()
 df1_filtered = pd.DataFrame(df1_filtered, columns=['Product'])
 df1_filtered = df1_filtered.sort_values(by='Product', ascending=True)
 df1_filtered.reset_index(inplace=True)
 df1_filtered = df1_filtered.drop('index', axis=1)
-df1_filtered
+#df1_filtered
 
 
 df3_filtered = df3["Product"].unique()
@@ -82,7 +82,7 @@ df3_filtered = pd.DataFrame(df3_filtered, columns=['Product'])
 #df3_filtered = df3_filtered.sort_values(by='Product', ascending=True)
 df3_filtered.reset_index(inplace=True)
 df3_filtered = df3_filtered.drop('index', axis=1)
-df3_filtered
+#df3_filtered
 
 concatenated_df = pd.concat([df1_filtered, df3_filtered], axis=1, ignore_index=True)
 #concatenated_df
