@@ -18,13 +18,7 @@ st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick📝")
 st.markdown("##")
 
-selected_columns = st.multiselect('Select columns:', df.columns.tolist())
 
-# Display the DataFrame with only the selected columns
-if selected_columns:
-    st.dataframe(df[selected_columns])
-else:
-    st.write("Please select at least one column.")
 #st.header("Sequencer")
 #seq_file = st.file_uploader("wms file",type=['xlsx'])
 
