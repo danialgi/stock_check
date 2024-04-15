@@ -40,15 +40,14 @@ if seq_file is not None:
     st.write("AFTER:")
     df_sorted
     
-   csv = df_sorted.to_csv(index=False)
-
+    csv = df_sorted.to_csv(index=False)
+    
     # Create the download button
     st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='data.csv',
-        mime='text/csv',
-    )
+    label="Download data as CSV",
+    data=csv,
+    file_name='data.csv',
+    mime='text/csv')
 
 
 
