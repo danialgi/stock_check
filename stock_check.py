@@ -122,7 +122,10 @@ for i in range(num_rows):
     dfs[i]
     dfs[i] =  dfs[i][[product_wms,quantity_wms,quantity_erp]]
     dfs[i]
-    dfs[i]= dfs[i].groupby([product_wms],as_index=False).sum()
+    dfs[i][product_wms].fillna(method='ffill', inplace=True)
+    # Now, group by 'Product' and sum the values for A and B
+    dfs[i] = dfs[i].groupby(product_wms, as_index=False).sum()
+    #dfs[i]= dfs[i].groupby([product_wms],as_index=False).sum()
     dfs[i]
     #dfs[i].rename(columns={ 'Total': 'WMS', 'CurrentQty': 'ERP'}, inplace=True)
 
