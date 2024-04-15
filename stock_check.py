@@ -105,9 +105,8 @@ dfs={}
 for i in range(num_rows):
     cell_value = df_unique.iat[i, 0]
     df1s[i] = df1[df1['Product'] == cell_value]
-    df2s[i] = df2[df2['Product'] == cell_value]
     df3s[i] = df3[df3['Product'] == cell_value]
-    dfs[i]= pd.concat([df1s[i], df2s[i], df3s[i]], axis=0,ignore_index=True)
+    dfs[i]= pd.concat([df1s[i], df3s[i]], axis=0,ignore_index=True)
     dfs[i] =  dfs[i][['Product','Product Name','Unnamed: 5','Quantity','BalanceQty']]
     dfs[i]= dfs[i].groupby(['Product'],as_index=False).sum()
     dfs[i].rename(columns={'Unnamed: 5': 'Warehouse', 'Quantity': 'WMS', 'BalanceQty': 'ERP'}, inplace=True)
