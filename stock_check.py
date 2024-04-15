@@ -74,7 +74,7 @@ df1_filtered = pd.DataFrame(df1_filtered, columns=['Product'])
 df1_filtered = df1_filtered.sort_values(by='Product', ascending=True)
 df1_filtered.reset_index(inplace=True)
 df1_filtered = df1_filtered.drop('index', axis=1)
-#df1_filtered
+df1_filtered
 
 
 df3_filtered = df3["Product"].unique()
