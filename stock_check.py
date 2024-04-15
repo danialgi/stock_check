@@ -91,7 +91,7 @@ df3_filtered = df3_filtered.drop('index', axis=1)
 df3_filtered
 
 concatenated_df = pd.concat([df1_filtered, df3_filtered], axis=1, ignore_index=True)
-concatenated_df
+#concatenated_df
 
 df_unique= pd.concat([df1_filtered, df3_filtered])
 df_unique = df_unique.drop_duplicates()
