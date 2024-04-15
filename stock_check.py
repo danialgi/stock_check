@@ -66,7 +66,7 @@ st.markdown("#")
 st.header("ERP File Upload")
 data_file2 = st.file_uploader("ERP file",type=['xlsx'])
 df3 = pd.read_excel(data_file2)
-df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
+#df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
 product_erp = st.selectbox('ERP PRODUCT column:', df1.columns.tolist())
@@ -75,9 +75,9 @@ quantity_erp = st.selectbox('ERP QUANTITY column:', df1.columns.tolist())
 #df1
 #df3
 
-df1_filtered = df1["Product"].unique()
-df1_filtered = pd.DataFrame(df1_filtered, columns=['Product'])
-df1_filtered = df1_filtered.sort_values(by='Product', ascending=True)
+df1_filtered = df1[product_wms].unique()
+df1_filtered = pd.DataFrame(df1_filtered, columns=['product_wms'])
+df1_filtered = df1_filtered.sort_values(by=product_wms, ascending=True)
 df1_filtered.reset_index(inplace=True)
 df1_filtered = df1_filtered.drop('index', axis=1)
 #df1_filtered
