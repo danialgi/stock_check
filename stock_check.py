@@ -15,7 +15,7 @@ today_date = datetime.now().strftime('%Y-%m-%d')
 
 st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
 
-st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick📝")
+st.title("🚚 Genuine Inside (M) Sdn. Bhd.")
 st.markdown("##")
 
 
@@ -48,7 +48,7 @@ if seq_file is not None:
         output.seek(0)
         return output
     
-    df_list = [df_final]
+    df_list = [df_sorted]
     sheet_list = ['Sheet1']
     
     # Convert DataFrames to Excel in memory
