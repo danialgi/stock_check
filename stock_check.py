@@ -31,7 +31,12 @@ if seq_file is not None:
     
     # Sort the DataFrame using the generated sort key
     df_sorted = loc_df.sort_values(by=location_column, key=ns_key)
+    df_sorted =  df_sorted.dropna(subset=[location_column])
+    df_sorted.reset_index(inplace=True)
+    df_sorted = df_sorted.drop('index', axis=1)
+    st.write("BEFORE:")
     loc_df
+    st.write("AFTER:")
     df_sorted
     
     # Function to write DataFrames to an Excel file in memory
