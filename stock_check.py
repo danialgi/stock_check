@@ -59,8 +59,8 @@ data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file)
 st.write("UPLOAD SUCESS")
 
-product_wms = st.selectbox('Select PRODUCT column:', df1.columns.tolist())
-quantity_wms = st.selectbox('Select QUANTITY column:', df1.columns.tolist())
+product_wms = st.selectbox('WMS PRODUCT column:', df1.columns.tolist())
+quantity_wms = st.selectbox('WMS QUANTITY column:', df1.columns.tolist())
 
 st.markdown("#")
 st.header("ERP File Upload")
@@ -68,6 +68,9 @@ data_file2 = st.file_uploader("ERP file",type=['xlsx'])
 df3 = pd.read_excel(data_file2)
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
+
+product_erp = st.selectbox('ERP PRODUCT column:', df1.columns.tolist())
+quantity_erp = st.selectbox('ERP QUANTITY column:', df1.columns.tolist())
 
 #df1
 #df3
