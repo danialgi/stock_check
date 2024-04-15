@@ -107,13 +107,13 @@ for i in range(num_rows):
     df1s[i] = df1[df1['Product'] == cell_value]
     df3s[i] = df3[df3['Product'] == cell_value]
     dfs[i]= pd.concat([df1s[i], df3s[i]], axis=0,ignore_index=True)
-    dfs[i] =  dfs[i][['Product','Product Name','Unnamed: 5','Quantity','BalanceQty']]
+    dfs[i] =  dfs[i][['Product','Product Name','Total','CurrentQty']]
     dfs[i]= dfs[i].groupby(['Product'],as_index=False).sum()
-    dfs[i].rename(columns={'Unnamed: 5': 'Warehouse', 'Quantity': 'WMS', 'BalanceQty': 'ERP'}, inplace=True)
+    dfs[i].rename(columns={ 'Total': 'WMS', 'CurrentQty': 'ERP'}, inplace=True)
 
 df_final = pd.concat(dfs)
-df_final = df_final[['Product', 'Product Name', 'Warehouse','ERP']].copy()
-df_final["var."] = df_final['Warehouse'] - df_final['ERP']
+df_final = df_final[['Product', 'Product Name', 'WMS','ERP']].copy()
+df_final["var."] = df_final['WMS'] - df_final['ERP']
 df_final = df_final[df_final['var.'] != 0]
 df_final = df_final.sort_values(by='var.', ascending=True)
 df_final.reset_index(inplace=True)
