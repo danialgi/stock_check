@@ -93,7 +93,11 @@ df3_filtered
 concatenated_df = pd.concat([df1_filtered, df3_filtered], axis=1, ignore_index=True)
 #concatenated_df
 
-df_unique = pd.concat([df1_filtered[0], df3_filtered[0]], ignore_index=True).to_frame(name='ProductCode')
+df1_filtered.columns = ['ProductCode']
+df3_filtered.columns = ['ProductCode']
+
+# Concatenate the two DataFrames into one column
+df_unique = pd.concat([df1_filtered, df3_filtered], ignore_index=True)
 df_unique
 df_unique = df_unique.drop_duplicates()
 df_unique  = df_unique.dropna()
