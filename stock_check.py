@@ -19,40 +19,48 @@ st.title("🚚 Genuine Inside (M) Sdn. Bhd. - Stock Tick📝")
 st.markdown("##")
 
 
-#st.header("Sequencer")
-#seq_file = st.file_uploader("wms file",type=['xlsx'])
+st.header("Sequencer (For Sequencing Location  ONLY)")
+seq_file = st.file_uploader("location file",type=['xlsx'])
 
-#if seq_file is not None:
-    #df_seq = pd.read_excel(seq_file,sheet_name="Sheet2")
-    #st.write("Before:")
-    #df_seq
-    #df_seq  = df_seq .sort_values(by='Location Code', key=natsort_keygen())
-    #st.write("After:")
-    #df_seq
-
+if seq_file is not None:
+    loc_df = pd.read_excel(seq_file)
+    location_column = st.selectbox('Select LOCATION column:', loc_df.columns.tolist())
+    
+    # Generate a sort key with the natsort_keygen function
+    ns_key = natsort_keygen()
+    
+    # Sort the DataFrame using the generated sort key
+    df_sorted = loc_df.sort_values(by=location_column, key=ns_key)
+    loc_df
+    df_sorted
+    
     # Function to write DataFrames to an Excel file in memory
-#def dfs_to_excel(df_list, sheet_list):
-    #output = BytesIO()
-    #with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-        #for dataframe, sheet in zip(df_list, sheet_list):
-            #dataframe.to_excel(writer, sheet_name=sheet, index=False)
-    #output.seek(0)
-    #return output
+    def dfs_to_excel(df_list, sheet_list):
+        output = BytesIO()
+        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+            for dataframe, sheet in zip(df_list, sheet_list):
+                dataframe.to_excel(writer, sheet_name=sheet, index=False)
+        output.seek(0)
+        return output
+    
+    df_list = [df_final]
+    sheet_list = ['Sheet1']
+    
+    # Convert DataFrames to Excel in memory
+    excel_file = dfs_to_excel(df_list, sheet_list)
+    
+    # Streamlit download button
+    st.download_button(
+        label="Download Excel file",
+        data=excel_file,
+        file_name=f"Stock_Tick_{today_date}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 
-#df_list = [df_seq]
-#sheet_list = ['Sheet1']
 
-# Convert DataFrames to Excel in memory
-#excel_file = dfs_to_excel(df_list, sheet_list)
 
-# Streamlit download button
-#st.download_button(
-    #label="Download Excel file",
-   # data=excel_file,
-    #file_name=f"WMS_Sequenced_{today_date}.xlsx",
-   # mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-#)
 
+st.markdown("#")
 st.write("______________________________________________________________________________________")
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
