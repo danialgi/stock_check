@@ -69,8 +69,8 @@ df3 = pd.read_excel(data_file2)
 #df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
-product_erp = st.selectbox('ERP PRODUCT column:', df1.columns.tolist())
-quantity_erp = st.selectbox('ERP QUANTITY column:', df1.columns.tolist())
+product_erp = st.selectbox('ERP PRODUCT column:', df3.columns.tolist())
+quantity_erp = st.selectbox('ERP QUANTITY column:', df3.columns.tolist())
 
 #df1
 #df3
