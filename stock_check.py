@@ -52,7 +52,6 @@ st.markdown("##")
    # mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 #)
 
-st.markdown("#")
 st.write("______________________________________________________________________________________")
 st.header("WMS File Upload")
 data_file = st.file_uploader("WMS file",type=['xlsx'])
@@ -63,6 +62,7 @@ st.markdown("#")
 st.header("ERP File Upload")
 data_file2 = st.file_uploader("ERP file",type=['xlsx'])
 df3 = pd.read_excel(data_file2)
+product_code = st.multiselect('Select columns:', df.columns)
 df3.rename(columns={'ProductCode': 'Product', 'ProductDescription': 'Product Name'}, inplace=True)
 st.write("UPLOAD SUCESS")
 
