@@ -114,7 +114,7 @@ for i in range(num_rows):
 df_final = pd.concat(dfs)
 df_final = df_final[['Product', 'Product Name', 'WMS','ERP']].copy()
 df_final["var."] = df_final['WMS'] - df_final['ERP']
-df_final = df_final[df_final['var.'] != 0]
+#df_final = df_final[df_final['var.'] != 0]
 df_final = df_final.sort_values(by='var.', ascending=True)
 df_final.reset_index(inplace=True)
 df_final = df_final.drop(['level_0','level_1'], axis=1)
