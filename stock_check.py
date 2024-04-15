@@ -42,15 +42,15 @@ st.markdown("##")
 #sheet_list = ['Sheet1']
 
 # Convert DataFrames to Excel in memory
-excel_file = dfs_to_excel(df_list, sheet_list)
+#excel_file = dfs_to_excel(df_list, sheet_list)
 
 # Streamlit download button
-st.download_button(
-    label="Download Excel file",
-    data=excel_file,
-    file_name=f"WMS_Sequenced_{today_date}.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-)
+#st.download_button(
+    #label="Download Excel file",
+   # data=excel_file,
+    #file_name=f"WMS_Sequenced_{today_date}.xlsx",
+   # mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+#)
 
 st.markdown("#")
 st.write("______________________________________________________________________________________")
