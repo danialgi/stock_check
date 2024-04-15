@@ -76,7 +76,7 @@ quantity_erp = st.selectbox('ERP QUANTITY column:', df3.columns.tolist())
 #df3
 
 df1_filtered = df1[product_wms].unique()
-df1_filtered = pd.DataFrame(df1_filtered, columns=['product_wms'])
+df1_filtered = pd.DataFrame(df1_filtered, columns=[product_wms])
 #df1_filtered = df1_filtered.sort_values(by=product_wms, ascending=True)
 df1_filtered.reset_index(inplace=True)
 df1_filtered = df1_filtered.drop('index', axis=1)
@@ -98,7 +98,6 @@ df3_filtered.columns = ['ProductCode']
 
 # Concatenate the two DataFrames into one column
 df_unique = pd.concat([df1_filtered, df3_filtered], ignore_index=True)
-df_unique
 df_unique = df_unique.drop_duplicates()
 df_unique  = df_unique.dropna()
 df_unique.reset_index(inplace=True)
