@@ -59,7 +59,7 @@ data_file = st.file_uploader("WMS file",type=['xlsx'])
 df1 = pd.read_excel(data_file)
 st.write("UPLOAD SUCESS")
 
-selected_columns = st.multiselect('Select columns:', df1.columns.tolist())
+product_wms = st.selectbox('select product column:', df1.columns.tolist())
 
 st.markdown("#")
 st.header("ERP File Upload")
