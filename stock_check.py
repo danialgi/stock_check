@@ -13,7 +13,7 @@ from io import BytesIO
 
 today_date = datetime.now().strftime('%Y-%m-%d')
 
-st.set_page_config(page_title="Stock Check", page_icon="🚚", layout="wide")
+st.set_page_config(page_title="Stock Tick", page_icon="🚚", layout="wide")
 
 st.title("🚚 Genuine Inside (M) Sdn. Bhd.")
 st.markdown("##")
