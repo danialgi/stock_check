@@ -44,9 +44,9 @@ if seq_file is not None:
     
     # Create the download button
     st.download_button(
-    label="Download data as CSV",
+    label="Download",
     data=csv,
-    file_name=f'Sequenced{today_date}.csv',
+    file_name=f'Sequenced {today_date}.csv',
     mime='text/csv')
 
 
