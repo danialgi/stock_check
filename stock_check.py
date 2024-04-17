@@ -46,7 +46,7 @@ if seq_file is not None:
     st.download_button(
     label="Download data as CSV",
     data=csv,
-    file_name='data.csv',
+    file_name=f'Sequenced{today_date}.csv',
     mime='text/csv')
 
 
