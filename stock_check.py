@@ -15,8 +15,7 @@ today_date = datetime.now().strftime('%Y-%m-%d')
 
 st.set_page_config(page_title="Stock Tick", page_icon="🚚", layout="wide")
 
-st.title("🚚 Genuine Inside (M) Sdn. Bhd.")
-st.markdown("##")
+st.write("🚚 Genuine Inside (M) Sdn. Bhd.")
 
 
 st.header("Sequencer (For Sequencing Location  ONLY)")
@@ -54,7 +53,7 @@ if seq_file is not None:
 
 st.markdown("#")
 st.write("______________________________________________________________________________________")
-st.title("Stock Tick📝")
+st.title("ERP Stock Check📝")
 st.markdown("#")
 
 st.header("WMS File Upload")
