@@ -16,6 +16,7 @@ today_date = datetime.now().strftime('%Y-%m-%d')
 st.set_page_config(page_title="Stock Tick", page_icon="🚚", layout="wide")
 
 st.write("🚚 Genuine Inside (M) Sdn. Bhd.")
+"#"
 
 
 st.header("Sequencer (For Sequencing Location  ONLY)")
